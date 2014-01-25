@@ -4,3 +4,9 @@
 [submodule ".vim/bundle/wandbox-vim"]
 	path = .vim/bundle/wandbox-vim
 	url = https://github.com/rhysd/wandbox-vim.git
+[submodule ".tmux/tmux-powerline"]
+	path = .tmux/tmux-powerline
+	url = https://github.com/erikw/tmux-powerline.git
+[submodule ".vim/bundle/alignta"]
+	path = .vim/bundle/alignta
+	url = https://github.com/h1mesuke/vim-alignta.git
