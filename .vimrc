@@ -25,6 +25,9 @@ set wildmode=list:longest,full
 
 set diffopt=filler,vertical
 
+hi JpSpace cterm=underline ctermfg=DarkGray
+autocmd BufNewFile,BufRead * match JpSpace /　/
+
 " vimgrep aliases
 nnoremap <Space>fw :vimgrep /\<<C-r>=expand("<cword>")<CR>\>/j 
 
