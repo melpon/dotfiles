@@ -20,6 +20,9 @@ autocmd FileType * set nosmartindent
 autocmd FileType * set nopreserveindent
 autocmd FileType make set noexpandtab
 
+autocmd BufNewFile,BufRead *.julius set filetype=javascript
+autocmd BufNewFile,BufRead *.hamlet set filetype=html
+
 set wildmenu
 set wildmode=list:longest,full
 
@@ -64,6 +67,9 @@ hi Statement  cterm=NONE ctermfg=Yellow
 hi PreProc    cterm=NONE ctermfg=Magenta
 hi Type       cterm=NONE ctermfg=LightGreen
 hi Special    cterm=NONE ctermfg=Green
+
+syntax match TailSpaces /\s\+$/ containedin=ALL
+hi TailSpaces cterm=NONE ctermbg=Red
 
 " terminal clipboard
 if !has('gui')
