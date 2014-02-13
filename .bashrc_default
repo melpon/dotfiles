@@ -5,7 +5,7 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -
 which git > /dev/null
 if [ $? -eq 0 ]; then
   git config --global color.ui auto                    # 出力先が端末のときに色をつけて表示する
-  git config --global alias.diff 'diff --color-words'  # 差分を単語単位で色分けで表示する
+  git config --global alias.words 'diff --color-words'  # 差分を単語単位で色分けで表示する
   git config --global alias.graph 'log --graph --decorate --oneline' # コミットグラフを見やすくする
 
   # git status --short --branch   # コンパクトな表示
