@@ -2,6 +2,7 @@ noremap qj <Esc>
 inoremap qj <Esc>
 
 syntax on
+filetype plugin on
 
 set tabstop=4
 set list
@@ -85,6 +86,5 @@ else
     noremap <Space>y "+y
     noremap <Space>p "+p
 endif
-
 
 call pathogen#incubate()
