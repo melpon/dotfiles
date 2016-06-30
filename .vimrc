@@ -3,6 +3,7 @@ inoremap qj <Esc>
 
 syntax on
 filetype plugin on
+filetype plugin indent on
 
 set tabstop=4
 set list
@@ -15,7 +16,7 @@ set hlsearch
 set nobackup
 autocmd FileType * set formatoptions-=ro
 autocmd FileType * set autoindent
-autocmd FileType * set indentexpr&
+" autocmd FileType * set indentexpr&
 autocmd FileType * set nocindent
 autocmd FileType * set nosmartindent
 autocmd FileType * set nopreserveindent
@@ -90,5 +91,11 @@ else
     noremap <Space>y "+y
     noremap <Space>p "+p
 endif
+
+" erlang settings
+autocmd BufNewFile,BufRead *.erl set filetype=erlang
+" erlang syntax check
+autocmd FileType erlang setlocal makeprg=erlc\ %
+autocmd FileType erlang setlocal errorformat=%f:%l:\ %m
 
 call pathogen#incubate()

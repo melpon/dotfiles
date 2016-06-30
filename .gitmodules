@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/vim-flake8"]
 	path = .vim/bundle/vim-flake8
 	url = https://github.com/nvie/vim-flake8.git
+[submodule ".vim/bundle/vim-erlang-runtime"]
+	path = .vim/bundle/vim-erlang-runtime
+	url = https://github.com/vim-erlang/vim-erlang-runtime
