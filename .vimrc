@@ -94,8 +94,9 @@ endif
 
 " erlang settings
 autocmd BufNewFile,BufRead *.erl set filetype=erlang
-" erlang syntax check
-autocmd FileType erlang setlocal makeprg=erlc\ %
-autocmd FileType erlang setlocal errorformat=%f:%l:\ %m
+
+" elixir settings
+autocmd BufNewFile,BufRead *.ex set filetype=elixir
+autocmd BufNewFile,BufRead *.exs set filetype=elixir
 
 call pathogen#incubate()
