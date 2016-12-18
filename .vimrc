@@ -99,4 +99,4 @@ autocmd BufNewFile,BufRead *.erl set filetype=erlang
 autocmd BufNewFile,BufRead *.ex set filetype=elixir
 autocmd BufNewFile,BufRead *.exs set filetype=elixir
 
-call pathogen#incubate()
+call pathogen#infect('bundle/{}')
