@@ -97,6 +97,10 @@ autocmd BufNewFile,BufRead *.erl set filetype=erlang
 
 " elixir settings
 autocmd BufNewFile,BufRead *.ex set filetype=elixir
+autocmd BufNewFile,BufRead *.ex set tabstop=2
+autocmd BufNewFile,BufRead *.ex set shiftwidth=2
 autocmd BufNewFile,BufRead *.exs set filetype=elixir
+autocmd BufNewFile,BufRead *.exs set tabstop=2
+autocmd BufNewFile,BufRead *.exs set shiftwidth=2
 
 call pathogen#infect('bundle/{}')
