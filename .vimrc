@@ -26,8 +26,8 @@ autocmd BufNewFile,BufRead *.julius set filetype=javascript
 autocmd BufNewFile,BufRead *.hamlet set filetype=html
 
 " flake8 settings
-autocmd BufWritePost *.py call Flake8()
-let g:flake8_cmd="flake8"
+" autocmd BufWritePost *.py call Flake8()
+" let g:flake8_cmd="flake8"
 
 set wildmenu
 set wildmode=list:longest,full
@@ -91,6 +91,8 @@ else
     noremap <Space>y "+y
     noremap <Space>p "+p
 endif
+
+set clipboard=unnamed
 
 " erlang settings
 autocmd BufNewFile,BufRead *.erl set filetype=erlang
