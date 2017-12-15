@@ -28,3 +28,5 @@ if [ $? -eq 0 ]; then
   # prove `git diff --name-only | grep '\.js$\|\.pm$'`   # perlのテストを実行
   # jshint `git diff --name-only | grep '\.js$'`        # jshintを実行
 fi
+
+export GOPATH=$HOME/go

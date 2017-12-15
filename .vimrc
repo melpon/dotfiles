@@ -1,6 +1,46 @@
 noremap qj <Esc>
 inoremap qj <Esc>
 
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('~/.vim/bundle')
+  call dein#begin('~/.vim/bundle')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.vim/bundle/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  call dein#add('h1mesuke/vim-alignta')
+  call dein#add('elixir-editors/vim-elixir')
+  call dein#add('vim-erlang/vim-erlang-runtime')
+  call dein#add('nvie/vim-flake8')
+  call dein#add('fatih/vim-go')
+  call dein#add('rhysd/wandbox-vim')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
 syntax on
 filetype plugin on
 filetype plugin indent on
@@ -104,5 +144,3 @@ autocmd BufNewFile,BufRead *.ex set shiftwidth=2
 autocmd BufNewFile,BufRead *.exs set filetype=elixir
 autocmd BufNewFile,BufRead *.exs set tabstop=2
 autocmd BufNewFile,BufRead *.exs set shiftwidth=2
-
-call pathogen#infect('bundle/{}')
