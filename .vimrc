@@ -24,6 +24,9 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('nvie/vim-flake8')
   call dein#add('fatih/vim-go')
   call dein#add('rhysd/wandbox-vim')
+  call dein#add('leafgarland/typescript-vim')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('MaxMEllon/vim-jsx-pretty')
 
   " Required:
   call dein#end()
@@ -132,7 +135,7 @@ else
     noremap <Space>p "+p
 endif
 
-set clipboard=unnamed
+set clipboard=
 
 " erlang settings
 autocmd BufNewFile,BufRead *.erl set filetype=erlang
