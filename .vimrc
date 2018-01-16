@@ -147,3 +147,9 @@ autocmd BufNewFile,BufRead *.ex set shiftwidth=2
 autocmd BufNewFile,BufRead *.exs set filetype=elixir
 autocmd BufNewFile,BufRead *.exs set tabstop=2
 autocmd BufNewFile,BufRead *.exs set shiftwidth=2
+
+" vim-go settings
+" :GoInstallBinaries を実行した上で、シェル上で gometalinter --install をしておくこと
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
+let g:go_fmt_command = "goimports"
