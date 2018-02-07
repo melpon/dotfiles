@@ -65,3 +65,5 @@ route () {
   net_tools_deprecated_message
   echo 'Use `ip r`'
 }
+
+export PATH=$GOPATH/bin:$PATH
