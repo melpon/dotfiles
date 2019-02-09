@@ -67,3 +67,4 @@ route () {
 }
 
 export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/dev/android/ndk:$PATH
