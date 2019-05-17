@@ -27,6 +27,7 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('pangloss/vim-javascript')
   call dein#add('MaxMEllon/vim-jsx-pretty')
+  call dein#add('rking/ag.vim')
 
   " Required:
   call dein#end()
@@ -153,3 +154,11 @@ autocmd BufNewFile,BufRead *.exs set shiftwidth=2
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
 let g:go_fmt_command = "goimports"
+
+" clang-format
+function! Formatonsave()
+  let l:formatdiff = 1
+  py3f /usr/local/share/clang/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+

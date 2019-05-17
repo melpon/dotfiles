@@ -68,3 +68,16 @@ route () {
 
 export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/dev/android/ndk:$PATH
+
+export KERL_CONFIGURE_OPTIONS=" \
+  --enable-kernel-poll \
+  --enable-hipe \
+  --enable-dirty-schedulers \
+  --enable-sharing-preserving \
+  --enable-lock-counter \
+  --disable-sctp \
+  --disable-dynamic-ssl-lib \
+  --with-ssl=/usr/local/Cellar/openssl/1.0.2r \
+  --without-javac \
+  --without-odbc \
+"
