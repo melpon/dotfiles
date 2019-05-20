@@ -27,6 +27,7 @@ if dein#load_state('~/.vim/bundle')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('pangloss/vim-javascript')
   call dein#add('MaxMEllon/vim-jsx-pretty')
+  call dein#add('mileszs/ack.vim')
   call dein#add('rking/ag.vim')
 
   " Required:
