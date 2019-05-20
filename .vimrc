@@ -142,12 +142,11 @@ set clipboard=
 autocmd BufNewFile,BufRead *.erl set filetype=erlang
 
 " elixir settings
-autocmd BufNewFile,BufRead *.ex set filetype=elixir
-autocmd BufNewFile,BufRead *.ex set tabstop=2
-autocmd BufNewFile,BufRead *.ex set shiftwidth=2
-autocmd BufNewFile,BufRead *.exs set filetype=elixir
-autocmd BufNewFile,BufRead *.exs set tabstop=2
-autocmd BufNewFile,BufRead *.exs set shiftwidth=2
+autocmd BufNewFile,BufRead *.ex,*.exs set filetype=elixir
+autocmd BufNewFile,BufRead *.ex,*.exs set tabstop=2
+autocmd BufNewFile,BufRead *.ex,*.exs set shiftwidth=2
+autocmd BufNewFile,BufRead *.ex,*.exs set formatprg=mix\ format\ -
+autocmd BufWritePre *.ex,*.exs :normal ggVGgq
 
 " vim-go settings
 " :GoInstallBinaries を実行した上で、シェル上で gometalinter --install をしておくこと
@@ -156,9 +155,8 @@ let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
 let g:go_fmt_command = "goimports"
 
 " clang-format
-function! Formatonsave()
+function! FormatonsaveCpp()
   let l:formatdiff = 1
   py3f /usr/local/share/clang/clang-format.py
 endfunction
-autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
-
+autocmd BufWritePre *.h,*.cc,*.cpp call FormatonsaveCpp()

@@ -75,6 +75,7 @@ export KERL_CONFIGURE_OPTIONS=" \
   --enable-dirty-schedulers \
   --enable-sharing-preserving \
   --enable-lock-counter \
+  --disable-debug \
   --disable-sctp \
   --disable-dynamic-ssl-lib \
   --with-ssl=/usr/local/Cellar/openssl/1.0.2r \
