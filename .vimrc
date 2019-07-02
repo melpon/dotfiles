@@ -147,7 +147,6 @@ autocmd BufNewFile,BufRead *.ex,*.exs set filetype=elixir
 autocmd BufNewFile,BufRead *.ex,*.exs set tabstop=2
 autocmd BufNewFile,BufRead *.ex,*.exs set shiftwidth=2
 autocmd BufNewFile,BufRead *.ex,*.exs set formatprg=mix\ format\ -
-autocmd BufWritePre *.ex,*.exs :normal ggVGgq
 
 " vim-go settings
 " :GoInstallBinaries を実行した上で、シェル上で gometalinter --install をしておくこと
@@ -160,4 +159,4 @@ function! FormatonsaveCpp()
   let l:formatdiff = 1
   py3f /usr/local/share/clang/clang-format.py
 endfunction
-autocmd BufWritePre *.h,*.cc,*.cpp call FormatonsaveCpp()
+autocmd BufWritePre *.h,*.c,*.cc,*.cpp call FormatonsaveCpp()
