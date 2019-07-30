@@ -20,6 +20,7 @@ if dein#load_state('~/.vim/bundle')
   " Add or remove your plugins here:
   call dein#add('h1mesuke/vim-alignta')
   call dein#add('elixir-editors/vim-elixir')
+  call dein#add('mhinz/vim-mix-format')
   call dein#add('vim-erlang/vim-erlang-runtime')
   call dein#add('nvie/vim-flake8')
   call dein#add('fatih/vim-go')
@@ -146,7 +147,7 @@ autocmd BufNewFile,BufRead *.erl set filetype=erlang
 autocmd BufNewFile,BufRead *.ex,*.exs set filetype=elixir
 autocmd BufNewFile,BufRead *.ex,*.exs set tabstop=2
 autocmd BufNewFile,BufRead *.ex,*.exs set shiftwidth=2
-autocmd BufNewFile,BufRead *.ex,*.exs set formatprg=mix\ format\ -
+let g:mix_format_on_save = 1
 
 " vim-go settings
 " :GoInstallBinaries を実行した上で、シェル上で gometalinter --install をしておくこと
