@@ -31,41 +31,6 @@ fi
 
 export GOPATH=$HOME/go
 
-# 非推奨になったネットワークコマンド養成ギプス より
-# http://blog.livedoor.jp/sonots/archives/38589335.html
-net_tools_deprecated_message () {
-  echo -n 'net-tools コマンドはもう非推奨ですよ？おじさんなんじゃないですか？ '
-}
-
-arp () {
-  net_tools_deprecated_message
-  echo 'Use `ip n`'
-}
-ifconfig () {
-  net_tools_deprecated_message
-  echo 'Use `ip a`, `ip link`, `ip -s link`'
-}
-iptunnel () {
-  net_tools_deprecated_message
-  echo 'Use `ip tunnel`'
-}
-iwconfig () {
-  echo -n 'iwconfig コマンドはもう非推奨ですよ？おじさんなんじゃないですか？ '
-  echo 'Use `iw`'
-}
-nameif () {
-  net_tools_deprecated_message
-  echo 'Use `ip link`, `ifrename`'
-}
-netstat () {
-  net_tools_deprecated_message
-  echo 'Use `ss`, `ip route` (for netstat -r), `ip -s link` (for netstat -i), `ip maddr` (for netstat -g)'
-}
-route () {
-  net_tools_deprecated_message
-  echo 'Use `ip r`'
-}
-
 export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/dev/android/ndk:$PATH
 
@@ -82,3 +47,19 @@ export KERL_CONFIGURE_OPTIONS=" \
   --without-javac \
   --without-odbc \
 "
+
+# Windows (MinGW) の場合は vswhere.exe を拾ってきて、Visual Studio のあれこれにパスを通す
+if [[ `uname` = MINGW* ]]; then
+  if [ ! -e $HOME/.vswhere/vswhere.exe ] && which curl > /dev/null 2>&1; then
+    mkdir -p $HOME/.vswhere
+    curl -Lo $HOME/.vswhere/vswhere.exe https://github.com/microsoft/vswhere/releases/download/3.0.1/vswhere.exe
+  fi
+
+  if [ -e $HOME/.vswhere/vswhere.exe ]; then
+    export PATH="$HOME/.vswhere:$PATH"
+
+    VS_PATH=`vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`
+    VARS=`cmd.exe /c call "$VS_PATH/VC/Auxiliary/Build/vcvars64.bat"`
+    echo $VARS
+  fi
+fi
