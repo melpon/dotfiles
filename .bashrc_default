@@ -58,8 +58,31 @@ if [[ `uname` = MINGW* ]]; then
   if [ -e $HOME/.vswhere/vswhere.exe ]; then
     export PATH="$HOME/.vswhere:$PATH"
 
-    VS_PATH=`vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`
-    VARS=`cmd.exe /c call "$VS_PATH/VC/Auxiliary/Build/vcvars64.bat"`
-    echo $VARS
+    VS_PATH=`vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`
+    RESULT=`cmd.exe /c "\"$VS_PATH/VC/Auxiliary/Build/vcvars64.bat\" & set"`
+    while read -r line; do
+      if [[ "$line" = PATH=* ]] || \
+          [[ "$line" = TMP=* ]] || \
+          [[ "$line" = INCLUDE=* ]] || \
+          [[ "$line" = LIB=* ]] || \
+          [[ "$line" = LIBPATH=* ]]; then
+        IFS="=" read -r name value <<< "$line"
+        # Windows のパスを Linux のパスに置き換える
+        # C:\hoge;C:\Program Files (x86)\fuga → /c/hoge:/c/Program\ Files\ \(x86\)/fuga
+        value="${value//C\:\\/\/c\/}"
+        value="${value//\\/\/}"
+        value="${value//;/\:}"
+        value="${value// /\\ }"
+        value="${value//\(/\\\(}"
+        value="${value//\)/\\\)}"
+        case "$name" in
+          "PATH" )      export PATH="$PATH:$value"          ;;
+          "TMP" )       export TMP="$TMP:$value"            ;;
+          "INCLUDE" )   export INCLUDE="$INCLUDE:$value"    ;;
+          "LIB" )       export LIB="$LIB:$value"            ;;
+          "LIBPATH" )   export LIBPATH="$LIBPATH:$value"    ;;
+        esac
+      fi
+    done <<< "$RESULT"
   fi
 fi
