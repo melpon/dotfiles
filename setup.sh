@@ -14,6 +14,6 @@ for file in `ls -A | grep -v 'setup.sh$' | grep -v '.git$' | grep -v '.gitignore
     ln -s $PWD/$file $HOME/$file
 done
 
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+curl https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh > installer.sh
 sh ./installer.sh ~/.vim/bundle
 rm installer.sh
